@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xd.pre.mapper.SysTestMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xd.pre.modules.sys.domain.SysTest">
+        <id column="test_id" property="testid"/>
+        <result column="username" property="username"/>
+        <result column="sex" property="sex"/>
+        <result column="age" property="age"/>
+        <result column="time" property="time"/>
+        <result column="introduce" property="introduce"/>
+    </resultMap>
+
+    <select id="selectTestUserList" resultMap="BaseResultMap">
+        select * from sys_test
+        <if test="username != null and username != ''">
+            <where>
+                username = ${username}
+            </where>
+        </if>
+
+    </select>
+</mapper>
